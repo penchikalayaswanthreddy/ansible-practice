@@ -1,1 +1,6 @@
-ansible all -i  , -e  ansible_user=ec2-user -e ansible_password=DevOps321 -m ping
+ansible all -i <ip-addr-target-server> , -e  ansible_user=ec2-user -e ansible_password="" -m ping
+
+
+ansible all -i , -e  ansible_user="" -e ansible_password="" -b -m dnf -a "name=nginx state=installed"
+
+
