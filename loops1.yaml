@@ -1,0 +1,13 @@
+- name: loops in ansible
+  hosts: local
+  connection: local
+  become: yes
+  tasks: 
+  - name: print something using loops
+    ansible.builtin.debug: 
+      msg: "student name : {{ item }}"
+    loop: 
+      - yaswanth
+      - sandeep
+      - rupesh
+      - sreedhar
