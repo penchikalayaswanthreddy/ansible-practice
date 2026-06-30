@@ -1,0 +1,9 @@
+- name: passing variables from files
+  hosts: localhost
+  connection : local
+  vars_files:
+  - emp_data.yaml
+  tasks: 
+  - name : prirnting varaiables 
+    ansible.builtin.debug: 
+      msg: "The student name is {{ Name }} . He works as a {{ Designation }} in {{ Company }}"
