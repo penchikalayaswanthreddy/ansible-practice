@@ -1,0 +1,14 @@
+- name: install nginx based on os family
+  hosts: local
+  connection: local
+  tasks: 
+  - name: install nginx if the os family is Debain
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+    when : ansible_os_family == "Debian"
+  - name: install nginx if the os family is RedHat
+    ansible.builtin.dnf: 
+      name: nginx
+      state: present
+    when : ansible_os_family == "RedHat"
