@@ -1,0 +1,14 @@
+- name: understanding task varaiables
+  hosts: localhost
+  connection : local
+  vars: 
+    Name : yaswanth
+    Designation : software engineer
+    Company : HCL
+  tasks: 
+  - name : prirnting varaiables 
+    vars:
+      Name: Sandeep
+      Company: Freshworks
+    ansible.builtin.debug: 
+      msg: "The student name is {{ Name }} . He works as a {{ Designation }} in {{ Company }}"
