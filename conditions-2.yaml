@@ -1,6 +1,7 @@
 - name: install nginx based on os family
   hosts: local
   connection: local
+  become : yes
   tasks: 
   - name: install nginx if the os family is Debain
     ansible.builtin.apt:
