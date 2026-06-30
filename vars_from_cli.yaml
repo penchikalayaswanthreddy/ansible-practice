@@ -1,0 +1,7 @@
+- name: Pass variables from cli
+  hosts: local
+  connection: local
+  tasks: 
+  - name: passing varaiables from  cli 
+    ansible.builtin.debug: 
+      msg: "The username is {{ username }} and text is {{ text }}"
