@@ -3,4 +3,4 @@ ansible all -i <ip-addr-target-server> , -e  ansible_user=ec2-user -e ansible_pa
 
 ansible all -i , -e  ansible_user="" -e ansible_password="" -b -m dnf -a "name=nginx state=installed"
 
-
+ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password="" task-vars.yaml
