@@ -4,4 +4,4 @@
   tasks: 
   - name: passing varaiables from inventory
     ansible.builtin.debug: 
-      msg: "The username is {{ username }} and password is {{ text }}"
+      msg: "The username is {{ username }} and text is {{ text }}"
