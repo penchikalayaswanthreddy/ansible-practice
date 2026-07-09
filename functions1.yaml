@@ -1,0 +1,10 @@
+- name: Functions in ansible
+  hosts: local
+  connection: local
+  become: yes
+  vars: 
+    Name: yaswanth
+  tasks: 
+  - name : Printing the varaible
+    ansible.builtin.debug: 
+      msg: " {{ Name }}"
