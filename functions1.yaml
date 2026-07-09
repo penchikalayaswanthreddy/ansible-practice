@@ -9,4 +9,4 @@
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ Address }}"
+      msg: " {{ Address | dict2items }}"
