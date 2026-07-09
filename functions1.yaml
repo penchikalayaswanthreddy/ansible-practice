@@ -5,7 +5,7 @@
   tasks: 
   - name: Read YAML file and store in variable
     ansible.builtin.set_fact:
-       yaml_var: "{{ lookup('file', 'emp_data.yml') | from_yaml }}"
+       yaml_var: "{{ lookup('file', 'emp_data.yaml') | from_yaml }}"
   - name: print the yaml varaiable
     ansible.builtin.debug: 
       msg: "{{ yaml_var | to_json }}"
