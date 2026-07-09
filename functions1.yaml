@@ -2,13 +2,10 @@
   hosts: local
   connection: local
   become: yes
-  vars: 
-    fruits: 
-    - key: fruit
-      value: apple
-    - key: sports
-      value: cricket      
   tasks: 
-  - name : Printing the varaible
+  - name: Read YAML file and store in variable
+    ansible.builtin.set_fact:
+       yaml_var: "{{ lookup('file', 'emp_data.yml') | from_yaml }}"
+  - name: print the yaml varaiable
     ansible.builtin.debug: 
-      msg: " {{ fruits | items2dict }}"
+      msg: "{{ yaml_var | to_json }}
