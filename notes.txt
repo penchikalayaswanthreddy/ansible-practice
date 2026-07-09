@@ -1,0 +1,11 @@
+# Use set_fact when:
+
+You need to read a file during playbook execution.
+You need to transform the data.
+You need to create a new variable dynamically.
+
+Use vars_files when:
+
+You just want to load variables from a YAML file before the play starts.
+
+This distinction is often asked in DevOps/Ansible interviews.

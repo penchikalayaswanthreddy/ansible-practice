@@ -10,4 +10,5 @@
   - name: Copy JSON content to a file
     ansible.builtin.copy:
       content: "{{ yaml_var | to_nice_json }}"
-      dest: ./emp_dat.json
+      dest: ./emp_data.json
+
