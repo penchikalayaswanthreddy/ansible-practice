@@ -15,4 +15,4 @@
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ fruits }}"
+      msg: " {{ fruits | items2dict }}"
