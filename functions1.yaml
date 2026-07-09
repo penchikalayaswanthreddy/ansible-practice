@@ -3,8 +3,10 @@
   connection: local
   become: yes
   vars: 
-    employee: yaswanth, muni, mukund, ganga
+    Address:
+      DoorNo: 14/98
+      Nagar: kamalanagar
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ employee | split(',') }}"
+      msg: " {{ Address }}"
