@@ -7,4 +7,4 @@
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ Name }}"
+      msg: " {{ Name | default('sandeep') }}"
