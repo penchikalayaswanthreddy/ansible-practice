@@ -8,4 +8,4 @@
        yaml_var: "{{ lookup('file', 'emp_data.yml') | from_yaml }}"
   - name: print the yaml varaiable
     ansible.builtin.debug: 
-      msg: "{{ yaml_var | to_json }}
+      msg: "{{ yaml_var | to_json }}"
