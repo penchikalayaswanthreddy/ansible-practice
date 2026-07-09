@@ -4,15 +4,11 @@
   become: yes
   vars: 
     fruits: 
-    - Name: Apple
-      state: Himachal pradesh
-    - Name: Banana
-      state: Andhra
-    - Name: carrot
-      village: korrakodu
-    - sport: kabbadi
-      city: Anantapur
+    - key: fruit
+      value: apple
+    - key: sports
+      value: cricket      
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ fruits | items2dict }}"
+      msg: " {{ fruits }}"
