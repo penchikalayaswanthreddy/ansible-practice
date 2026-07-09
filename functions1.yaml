@@ -3,7 +3,7 @@
   connection: local
   become: yes
   vars: 
-    Name: yaswanth
+    employee: yaswanth
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
