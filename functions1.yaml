@@ -7,4 +7,4 @@
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ employee }}"
+      msg: " {{ employee | split(',') }}"
