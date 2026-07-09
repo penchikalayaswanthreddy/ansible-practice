@@ -3,10 +3,12 @@
   connection: local
   become: yes
   vars: 
-    Address:
-      DoorNo: 14/98
-      Nagar: kamalanagar
+    fruits: 
+    - Apple
+    - Banana
+    - carrot
+    - Mango
   tasks: 
   - name : Printing the varaible
     ansible.builtin.debug: 
-      msg: " {{ Address | dict2items }}"
+      msg: " {{ fruits }}"
