@@ -3,11 +3,19 @@
   connection: local
   become: yes
   tasks: 
-  - name: execute a command with shell module
+  - name: execute a command with command module
     ansible.builtin.command: 
       ls | grep loop
     register: command_output
-  - name: print the shell command_output
+  - name: print the command output
+    ansible.builtin.debug:
+      msg: " {{ command_output }}"
+
+  - name: execute a command with shell module
+    ansible.builtin.shell: 
+      ls | grep loop
+    register: command_output
+  - name: print the shell output
     ansible.builtin.debug:
       msg: " {{ command_output }}"
 
