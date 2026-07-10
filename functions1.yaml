@@ -4,7 +4,7 @@
   become: yes
   tasks: 
   - name: execute a command with shell module
-    ansible.builtin.shell: 
+    ansible.builtin.command: 
       ls | grep loop
     register: command_output
   - name: print the shell command_output
