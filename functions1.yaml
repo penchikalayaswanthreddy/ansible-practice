@@ -12,3 +12,9 @@
     ansible.builtin.debug:
       msg: " {{ command_output }}"
 
+  - name : create roboshop user if user does not exits
+    ansible.builtin.command: 
+      adduser roboshop
+    when: command_output.rc != 0
+
+
