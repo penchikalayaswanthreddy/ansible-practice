@@ -1,0 +1,13 @@
+- name: create ec2 instance and route53 record
+  hosts: local
+  connection: local
+  become: yes
+  tasks: 
+  - name: Launch EC2 Instance
+    amazon.aws.ec2_instance:
+      name: mongodb
+      image_id: ami-0220d79f3f480ecf5
+      instance_type: t2.micro
+      security_group: sg-06768f041e8b8b319
+      count: 1
+      state: running
