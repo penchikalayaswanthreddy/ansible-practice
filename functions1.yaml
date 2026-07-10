@@ -5,7 +5,7 @@
   tasks: 
   - name: execute a command with shell module
     ansible.builtin.shell: 
-      ls 
+      ls | grep loop
     register: command_output
   - name: print the shell command_output
     ansible.builtin.debug:
