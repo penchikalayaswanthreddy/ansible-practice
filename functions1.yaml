@@ -3,12 +3,7 @@
   connection: local
   become: yes
   tasks: 
-  - name: Read YAML file and store in variable
-    ansible.builtin.set_fact:
-       yaml_var: "{{ lookup('file', 'emp_data.yaml') | from_yaml }}"
-
-  - name: Copy JSON content to a file
-    ansible.builtin.copy:
-      content: "{{ yaml_var | to_nice_json }}"
-      dest: ./emp_data.json
+  - name: execute a command with shell module
+    ansible.builtin.command: 
+      ls -l
 
