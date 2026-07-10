@@ -6,6 +6,7 @@
   - name: execute a command with command module
     ansible.builtin.command: 
       ls | grep loop
+    ignore_errors: true
     register: command_output
   - name: print the command output
     ansible.builtin.debug:
