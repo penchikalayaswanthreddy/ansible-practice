@@ -4,7 +4,7 @@
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
-      name: mysql
+      name: rabbitmq
       image_id: ami-0220d79f3f480ecf5
       instance_type: t2.micro
       security_group: sg-06768f041e8b8b319
@@ -14,3 +14,5 @@
   - name: printing ec2 creation ec2_output
     ansible.builtin.debug: 
       msg: " {{ ec2_output.instances[0].public_ip_address }}"
+      msg: " {{ ec2_output.instances[0].private_ip_address }}"
+      msg: " {{ ec2_output.instances[0].item }}"
