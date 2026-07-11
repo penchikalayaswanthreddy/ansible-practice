@@ -13,6 +13,4 @@
     register: ec2_output
   - name: printing ec2 creation ec2_output
     ansible.builtin.debug: 
-      msg: " {{ ec2_output.instances[0].public_ip_address }}"
-      msg: " {{ ec2_output.instances[0].private_ip_address }}"
-      msg: " {{ ec2_output.instances[0].name }}"
+      msg: " {{ ec2_output.instances[0] }}"
