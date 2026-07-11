@@ -12,15 +12,24 @@
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
-      name: " {{ item }} "
+      name: "{{ item }}"
       image_id: "{{ image_id }}"
       instance_type: t2.micro
       security_group: "{{ security_group }}"
       count: 1
       state: running
-    register: ec2_output
     loop: "{{ packages }}"
+    register: ec2_output
 
-  - name: print ec2 output 
-    ansible.builtin.debug:
-      msg: " {{ ec2_output }}"
+  - name: Create A record in Route53
+    amazon.aws.route53:
+          state: present
+          zone: "{{ domain_name }}"
+          record: "{{ item.instances[0].tags.Name }}.{{ domain_name }}"
+          type: A
+          ttl: 1
+          value: "{{ item.instances[0].private_ip_address }}"
+          overwrite: true
+    loop: "{{ ec2_output.results }}"
+
+ 
