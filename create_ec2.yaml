@@ -1,23 +1,26 @@
 - name: create ec2 instance and route53 record
   hosts: local
   connection: local
+  vars: 
+    image_id: ami-0220d79f3f480ecf5
+    security_group: sg-06768f041e8b8b319
+    domain_name: yaswanthreddypenchikala.online
+    packages: 
+    - mongodb
+    - redis
+
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
-      name: mongodb
-      image_id: ami-0220d79f3f480ecf5
+      name: {{ item }}
+      image_id: "{{ image_id }}"
       instance_type: t2.micro
-      security_group: sg-06768f041e8b8b319
+      security_group: "{{ security_group }}"
       count: 1
       state: running
     register: ec2_output
+    loop: "{{ packages }}"
 
-  - name: Create A record in Route53
-    amazon.aws.route53:
-          state: present
-          zone: "yaswanthreddypenchikala.online"
-          record: "mongodb.yaswanthreddypenchikala.online"
-          type: A
-          ttl: 1
-          value: "{{ ec2_output.instances[0].private_ip_address }}"
-          overwrite: true
+  - name: print ec2 output 
+    ansible.builtin.debug:
+      msg: " {{ ec2_output }}"
