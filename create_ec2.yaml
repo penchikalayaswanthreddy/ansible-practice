@@ -4,7 +4,7 @@
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
-      name: mongodb
+      name: redis
       image_id: ami-0220d79f3f480ecf5
       instance_type: t2.micro
       security_group: sg-06768f041e8b8b319
@@ -13,4 +13,4 @@
     register: ec2_output
   - name: printing ec2 creation ec2_output
     ansible.builtin.debug: 
-      msg: " {{ ec2_output }}"
+      msg: " {{ ec2_output.instances }}"
