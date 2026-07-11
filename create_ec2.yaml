@@ -1,7 +1,6 @@
 - name: create ec2 instance and route53 record
   hosts: local
   connection: local
-  become: yes
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
@@ -11,3 +10,7 @@
       security_group: sg-06768f041e8b8b319
       count: 1
       state: running
+    register: ec2_output
+  - name: printing ec2 creation ec2_output
+    ansible.builtin.debug: 
+      msg: " {{ ec2_output }}"
