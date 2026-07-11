@@ -19,5 +19,5 @@
           record: "mongodb.yaswanthreddypenchikala.online"
           type: A
           ttl: 1
-          value: "{{ ec2_output.instances[0].private_ip_address }}""
+          value: "{{ ec2_output.instances[0].private_ip_address }}"
           overwrite: true
