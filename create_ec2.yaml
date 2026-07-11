@@ -4,13 +4,20 @@
   tasks: 
   - name: Launch EC2 Instance
     amazon.aws.ec2_instance:
-      name: rabbitmq
+      name: mongodb
       image_id: ami-0220d79f3f480ecf5
       instance_type: t2.micro
       security_group: sg-06768f041e8b8b319
       count: 1
       state: running
     register: ec2_output
-  - name: printing ec2 creation ec2_output
-    ansible.builtin.debug: 
-      msg: " {{ ec2_output.instances[0].tags.Name }}"
+
+  - name: Create A record in Route53
+    amazon.aws.route53:
+          state: present
+          zone: "yaswanthreddypenchikala.online"
+          record: "mongodb.yaswanthreddypenchikala.online"
+          type: A
+          ttl: 1
+          value: "{{ ec2_output.instances[0].private_ip_address }}""
+          overwrite: true
