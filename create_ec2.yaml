@@ -15,4 +15,4 @@
     ansible.builtin.debug: 
       msg: " {{ ec2_output.instances[0].public_ip_address }}"
       msg: " {{ ec2_output.instances[0].private_ip_address }}"
-      msg: " {{ ec2_output.instances[0].item }}"
+      msg: " {{ ec2_output.instances[0].name }}"
