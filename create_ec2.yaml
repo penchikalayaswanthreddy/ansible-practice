@@ -8,6 +8,8 @@
     packages: 
     - mongodb
     - redis
+    - nginx
+    - catalogue
 
   tasks: 
   - name: Launch EC2 Instance
@@ -31,5 +33,17 @@
           value: "{{ item.instances[0].private_ip_address }}"
           overwrite: true
     loop: "{{ ec2_output.results }}"
+
+  - name: Create A record in Route53
+    amazon.aws.route53:
+          state: present
+          zone: "{{ domain_name }}"
+          record: "{{ item.instances[0].tags.Name }}.{{ domain_name }}"
+          type: A
+          ttl: 1
+          value: "{{ item.instances[0].public_ip_address }}"
+          overwrite: true
+    loop: "{{ ec2_output.results }}"
+    when : item.instances[0].tags.Name == "nginx"
 
  
